@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="icon" type="image/png" href="tlogo.png">
+    <title>Lachenmayr Webdev Inc</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@700&family=Teko:wght@700&display=swap" rel="stylesheet">
+
+<style>
+html {
+  scroll-behavior: smooth;
+}
+body {
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        text-align: left;
+        /*background-color:darksalmon;*/
+        color: rgb(28, 28, 51);
+        background: linear-gradient(to bottom, salmon, #f9c6b0,);
+       
+
+        }
+        .card, .hero, .Footer {
+    margin-bottom: 40px;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.Header, .Footer {
+    width: 100vw; /* Full viewport width */
+    margin: 0;
+    padding: 10px 20px;
+    background: beige;
+    color: teal;
+    font-family: garamond;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    box-sizing: border-box;
+}
+
+.header-inner,
+.footer-inner {
+  width: 100%;
+  padding: 10px 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.Header {
+    background: beige;
+    font-family: garamond;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    position: fixed; 
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 10px 0;
+    color: teal;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid teal;;
+    backdrop-filter: blur(10px);
+    background: rgba(245, 245, 220, 0.85); /* soft beige w/ transparency */
+
+}
+.Footer {
+    background: beige;
+    color: teal;
+    padding: 10px 0;
+    flex-direction: column;
+    align-items: left;
+    border-top: 2px solid teal;
+    font-size: 0.9rem;
+    position: static;
+    bottom: 0;
+}
+
+.Footer a {
+    color: teal;
+    text-decoration: underline;
+}
+
+
+.menu-button {
+    position: absolute;
+    display: flex; 
+    Align-items: center;
+    transform: translateY(0%);
+    right: 15px;
+    background: teal;
+    color: beige;
+    border: none;
+    top: 20px;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.menu-button:hover {
+    transform: scale(1.05);
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+    transition: .5s;
+}
+.menu {
+    display: none;
+    background: beige;
+    color: teal;
+    font-size:small;
+    flex-direction: column;
+    align-items: flex-start; /* Ensures left alignment */
+    position: absolute;
+    top: 100%;
+    background: white;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    right: 0px;
+    width: 150px;
+    padding: 0px;
+    border-radius: 6px;
+}
+.menu a:hover {
+    color: beige;
+    background: teal;
+    transform: scale(1.01);
+    transition: 0.5s;
+    border-radius: 3px;
+}
+
+.menu.show {
+  display: flex;
+  max-height: 500px; /* or enough to show all items */
+}
+
+.menu a {
+    display: block; /* Forces full-width */
+    width: 100%; /* Ensures each item takes up full row */
+    text-decoration: none;
+    background: beige;
+    color: teal;
+    font-family:'Times New Roman', Times, serif;
+    padding: 10px;
+    transition: 0.3s;
+}
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.card {
+    background-color: beige;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom: 30px;
+}
+
+.card h3 {
+    margin-top: 0;
+    color: #1a1a2e;
+}
+
+.card ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+    border-left: 6px solid teal;
+    background-color: #fffaf2;
+}
+
+.hero {
+    background-color: #fff5ec;
+    padding: 30px 20px;
+    margin: 80px 0 20px 0;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: center;
+    animation: fadeIn 1.2s ease-in;
+    padding-top: 40px;
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+.hero p {
+    font-size: 1.2rem;
+    color: #444;
+}
+
+@media (max-width: 768px) {
+  .hero h2 { font-size: 1.5rem; }
+  .hero p { font-size: 1rem; }
+  .card { padding: 15px; }
+  .menu-button { font-size: 20px; top: 15px; }
+}
+
+
+</style> 
+<Header class="Header">
+    <div class="header-inner">
+    <h1>S. Lachenmayr, Webdev | <small><Emp> Est. 2025</Emp></small><br>
+    
+
+    <button class="menu-button" onclick="toggleMenu()">&#8801;</button>
+    <nav id="menu" class="menu">
+        <a href="Services.html">&#9824;Services & Pricing</a>
+        <!--a href="About.html">&#9827;About</a-->
+        <!-- <a href="highlights.html">&#9830;Other Work</a>-->
+        <a href="contact.html">&#9829;Contact</a>
+    </nav>
+</div>
+</Header>
+<section class="hero">
+    <H2>Helping small businesses get noticed</H2>
+    <p>We build websites that work.</p>
+
+
+</section>
+<body>
+    <div class="container"></div>
+    <section>
+        <section class="card">
+            <h2>What we do</h2><br>
+            <p>I work with small businesses, entrepreneurs, and passionate individuals to craft websites that make an impact. Whether you're starting from scratch or looking to refresh your online presence, I bring your ideas to life with creativity and precision.</p>
+            <br>
+            <ul>
+                <li>Helping small businesses create sleek, professional websites that work</li>
+                <li>Empowering personal brands to rise above the noise and build their audience</li>
+                <li>Building no-nonsense websites for entrepreneurs and side hustlers focused on function, not fluff</li>
+            </ul>
+          </section>
+
+        
+        <section class="card">
+            <h2>What we offer</h2>
+            <br>
+                <ul>
+                    <li>Custom website development with a focus on simplicity and user experience</li>
+                    <li>Giving outdated websites a fresh, modern look while enhancing functionality</li>
+                    <li>Creating fully responsive websites that look great on any device</li>
+                    <li>Frontend & backend development using HTML, CSS, PHP, SQL, and Java</li>
+                    <li>Optimizing performance for faster load times and smoother user experiences</li>
+                    <li>Ensuring SEO-friendly structure and code to help you rank higher</li>
+                    <li>Providing small businesses with low-maintenance, high-impact website solutions</li>
+                </ul>
+        </section>
+
+        <!--section class="card">
+            <h2>Full-Time Experience</h2>
+            <h4><i>Supply Chain Analyst & Web Developer</i></h4>
+            <ul>
+                <li>Developing internal web tools using PHP, SQL, HTML, CSS, and JavaScript to streamline processes</li>
+                <li>Creating custom reporting solutions to empower data-driven decision-making</li>
+                <li>Applying creative tech solutions to solve complex operational challenges</li>
+                <li>Collaborating with cross-functional teams to improve efficiency and streamline workflows</li>
+            </ul>
+          </section-->
+          
+    </section>
+
+
+<Footer class="Footer">
+    <div class="footer-inner">
+    <h4><small><strong> Located in:</strong> <i>Nazareth, PA</i><br>
+    <b>Email: </b><a href="mailto:sarahlachenmayr1@gmail.com">sarahlachenmayr1@gmail.com </a> 
+    <h5>S. Lachenmayr, Webdev Specialist | <small>Est. 2025</small> &#127157; &#127154; &#127157;</small></h5>
+    </div>
+</Footer>
+<script>
+    function toggleMenu() {
+    const menu = document.getElementById("menu");
+    menu.classList.toggle("show");
+    }
+</script>
+</body>
+</html>
